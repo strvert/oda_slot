@@ -1,1 +1,35 @@
+void write_7seg(int second) {
+  int numList[] = {0x3F, 0x06, 0x5B, 0x4F, 0x66, 0x6D, 0x7D, 0x27, 0x7F, 0x6F, 0x00};
+  int count_min, count_sec;
+  count_min = second / 60;
+  count_sec = second % 60;
+  Wire.beginTransmission(LDaddrs1);
+  Wire.write(0x00);
+  Wire.write(numList[count_min / 10 == 0 ? 10 : count_min / 10]); // Control Digit1
+  Wire.write(0x00);
+  Wire.write(numList[count_min % 10]); // Control Digit2
+  Wire.write(0x00);
+  Wire.write(0x03); // Control D1,D2,D3
+  Wire.write(0x00);
+  Wire.write(numList[count_sec / 10]); // Control Digit3
+  Wire.write(0x00);
+  Wire.write(numList[count_sec % 10]); // Control Digit4
+  Wire.endTransmission();
+}
 
+void write_all_7seg(int num) {
+  int numList[] = {0x3F, 0x06, 0x5B, 0x4F, 0x66, 0x6D, 0x7D, 0x27, 0x7F, 0x6F, 0x00};
+  Wire.beginTransmission(LDaddrs1);
+  Wire.write(0x00);
+  Wire.write(numList[num]); // Control Digit1
+  Wire.write(0x00);
+  Wire.write(numList[num]); // Control Digit2
+  Wire.write(0x00);
+  Wire.write(0x03); // Control D1,D2,D3
+  Wire.write(0x00);
+  Wire.write(numList[num]); // Control Digit3
+  Wire.write(0x00);
+  Wire.write(numList[num]); // Control Digit4
+  Wire.endTransmission();
+  delay(100);
+}
