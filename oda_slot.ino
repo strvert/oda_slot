@@ -4,7 +4,17 @@
 #include <FlexiTimer2.h>
 #include <Wire.h>
 
+typedef enum {
+    EASY,
+    NORMAL,
+    HARD
+  } Difficulty;
+
+Difficulty diff;
+
 void setup() {
+  Serial.begin(9600);
+  
   // put your setup code here, to run once:
   Wire.begin();
   Wire.setClock(400000L);
@@ -28,7 +38,17 @@ void setup() {
   Wire.beginTransmission(LDaddrs1);
   Wire.write(0x81);
   Wire.endTransmission();
+
+  pinMode(13,INPUT_PULLUP);
+  pinMode(12,INPUT_PULLUP);
+  pinMode(9,INPUT_PULLUP);
+  pinMode(8,INPUT_PULLUP);
+
+  diff = NORMAL;
 }
 
 void loop() {
+  readDifficulty();
+  Serial.print(diff);
+  
 }
