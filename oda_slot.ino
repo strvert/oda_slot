@@ -10,7 +10,9 @@ typedef enum {
     HARD
   } Difficulty;
 
-Difficulty diff;
+// global val
+char CW_LIST[] = {13, 12, 9, 8};
+Difficulty DIFF = NORMAL;
 
 void setup() {
   Serial.begin(9600);
@@ -43,12 +45,9 @@ void setup() {
   pinMode(12,INPUT_PULLUP);
   pinMode(9,INPUT_PULLUP);
   pinMode(8,INPUT_PULLUP);
-
-  diff = NORMAL;
 }
 
 void loop() {
   readDifficulty();
-  Serial.print(diff);
-  
+  Serial.println();
 }

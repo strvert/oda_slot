@@ -15,6 +15,5 @@ bool push_set(){
 }
 
 bool get_sw_state(int pin){
-  int cw_list[] = {13, 12, 9, 8};
-  return digitalRead(cw_list[pin]);  
+  return digitalRead(CW_LIST[pin]);  
 }
