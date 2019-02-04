@@ -19,7 +19,7 @@ void flashLEDs(char score){
   }
 }
 
-void turnOFFLEDs(){
+void turnOLEDs(){
   for(char index = 0;index < 4;index ++){
     digitalWrite(LED_PINS[index],LOW);
   }
