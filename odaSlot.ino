@@ -119,7 +119,7 @@ void loop() {
 
     case RESULT:
       SCORE = calcScore(SEG_NUMS);
-      FlashLEDs(SCORE);
+      flashLEDs(SCORE);
 
       //スコアに応じて音を変更
       switch(SCORE){
