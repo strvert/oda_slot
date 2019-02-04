@@ -88,7 +88,6 @@ void loop() {
   switch (STATE) {
     case STOP:
       resetSegNums();
-      turnOFFLEDs();
       SEG_SELECTOR = 0;
       writeAll7seg(0);
       //どんな状態からもリセットしたらここに戻る
