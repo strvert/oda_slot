@@ -12,14 +12,14 @@ bool getSwState(int pin) {
   return digitalRead(CW_LIST[pin]);
 }
 
-void FlashLEDs(char score){
+void flashLEDs(char score){
   char index = 0;
   for(score/=10; index<score ; index++){
     digitalWrite(LED_PINS[index],HIGH);
   }
 }
 
-void TurnOFFLEDs(){
+void turnOFFLEDs(){
   for(char index = 0;index < 4;index ++){
     digitalWrite(LED_PINS[index],LOW);
   }
